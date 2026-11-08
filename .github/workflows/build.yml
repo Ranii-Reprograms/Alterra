@@ -22,3 +22,8 @@ jobs:
         with:
           gradle-version: '8.7'
       - run: gradle build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Ore-Terrain-Filter
+          path: build/libs/*.jar
+          if-no-files-found: error
