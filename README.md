@@ -11,6 +11,10 @@ A configurable terrain-based ore generation filter for the Mindustry map editor.
 - Integrates with the native map generation filter list.
 - Can be used during map generation or applied to an existing map through the editor's filter workflow.
 
+## Behavior
+
+For each tile, the filter checks its current floor and overlay. If the overlay is an ore block and the floor is selected, the overlay is changed to air. No floor or wall data is changed.
+
 ## Build
 
 Requires JDK 17 and Gradle.
@@ -23,8 +27,4 @@ The mod JAR is created in `build/libs`.
 
 ## Compatibility
 
-Targeted at Mindustry v8 Build 160.7. The mod uses the native `GenerateFilter` API and does not replace the map generator.
-
-## Behavior
-
-For each tile, the filter checks its current floor and overlay. If the overlay is an ore block and the floor is selected, the overlay is changed to air. No floor or wall data is changed.
+Targeted at Mindustry v8 Build 160.7. The mod uses the native `GenerateFilter` API and does not replace the map generator. 
