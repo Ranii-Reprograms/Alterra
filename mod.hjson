@@ -1,7 +1,7 @@
-name: Ore-Terrain-Filter
-displayName: Ore Terrain Filter
-author: Sqwibles
-description: Configurable terrain-based ore filtering for the Map Editor. Exclude selected vanilla or modded floors from ore overlays for better ore gen manipulation.
+name: Alterra
+displayName: Alterra
+author: Ranii
+description: Configurable editing tool for the Map Editor.
 version: 1.0
 minGameVersion: 160.7
 main: oreterrainfilter.OreTerrainFilterMod
