@@ -1,7 +1,7 @@
 name: Ore-Terrain-Filter
 displayName: Ore Terrain Filter
 author: Sqwibles
-description: Configurable terrain-based ore filtering for the Mindustry map editor. Exclude selected vanilla or modded floors from ore overlays.
+description: Configurable terrain-based ore filtering for the Map Editor. Exclude selected vanilla or modded floors from ore overlays for better ore gen manipulation.
 version: 1.0
 minGameVersion: 160.7
 main: oreterrainfilter.OreTerrainFilterMod
