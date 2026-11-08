@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group = 'sqwibles'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compileOnly 'com.github.Anuken.Mindustry:core:v160.7'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    archiveBaseName = 'Ore-Terrain-Filter'
+    from('mod.hjson')
+    from('README.md')
+}
