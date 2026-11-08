@@ -8,19 +8,11 @@ import mindustry.world.Block;
 import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.environment.OverlayFloor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FloorFilterOption extends FilterOption{
     private final OreTerrainFilter filter;
-    private final List<String> excludedFloors = new ArrayList<>();
 
     public FloorFilterOption(OreTerrainFilter filter){
         this.filter = filter;
-    }
-
-    public boolean excludes(String floorName){
-        return excludedFloors.contains(floorName);
     }
 
     @Override
@@ -31,14 +23,14 @@ public class FloorFilterOption extends FilterOption{
             if(!(block instanceof Floor) || block instanceof OverlayFloor || !block.inEditor) continue;
 
             CheckBox box = new CheckBox(block.localizedName);
-            box.setChecked(excludedFloors.contains(block.name));
+            box.setChecked(filter.excludes(block.name));
             box.changed(() -> {
                 if(box.isChecked()){
-                    if(!excludedFloors.contains(block.name)){
-                        excludedFloors.add(block.name);
+                    if(!filter.excludes(block.name)){
+                        filter.excludedFloors.add(block.name);
                     }
                 }else{
-                    excludedFloors.remove(block.name);
+                    filter.excludedFloors.remove(block.name);
                 }
                 changed.run();
             });
