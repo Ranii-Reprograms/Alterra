@@ -1,0 +1,29 @@
+name: Build mod
+
+on:
+  push:
+    branches:
+      - main
+      - implementation/**
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+      - run: gradle build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Ore-Terrain-Filter
+          path: build/libs/*.jar
+          if-no-files-found: error
