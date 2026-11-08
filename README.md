@@ -1,6 +1,6 @@
-# Ore-Terrain-Filter
+# Alterra
 
-A configurable terrain-based ore generation filter for the Mindustry map editor.
+Configurable editing tool for the Map Editor.
 
 ## Features
 
