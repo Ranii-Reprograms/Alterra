@@ -20,7 +20,7 @@ public class FloorFilterOption extends FilterOption{
         table.add("Remove ore overlays from these floors").left().colspan(2).wrap().row();
 
         for(Block block : Vars.content.blocks()){
-            if(!(block instanceof Floor) || block instanceof OverlayFloor || !block.inEditor) continue;
+            if(!(block instanceof Floor) || block instanceof OverlayFloor) continue;
 
             CheckBox box = new CheckBox(block.localizedName);
             box.setChecked(filter.excludes(block.name));
