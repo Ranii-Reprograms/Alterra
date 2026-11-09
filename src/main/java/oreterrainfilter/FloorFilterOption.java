@@ -2,6 +2,8 @@ package oreterrainfilter;
 
 import arc.Core;
 import arc.struct.Seq;
+import arc.scene.ui.CheckBox;
+import arc.scene.ui.layout.Cell;
 import arc.scene.ui.layout.Table;
 import mindustry.Vars;
 import mindustry.content.Blocks;
@@ -81,14 +83,20 @@ public class FloorFilterOption extends FilterOption{
             list.table(row -> {
                 row.left();
                 row.image(f.uiIcon).size(Vars.iconMed).padRight(6f);
-                row.check(f.localizedName, filter.excludes(f.name), checked -> {
+                Cell<CheckBox> cell = row.check(f.localizedName, filter.excludes(f.name), checked -> {
                     if(checked){
                         if(!filter.excludes(f.name)) filter.excludedFloors.add(f.name);
                     }else{
                         filter.excludedFloors.remove(f.name);
                     }
                     changed.run();
-                }).left().growX();
+                });
+                cell.left().growX();
+                //left-align the box and let long names wrap instead of getting cut off
+                CheckBox box = cell.get();
+                box.left();
+                box.getLabel().setWrap(true);
+                box.getLabelCell().growX().left().padLeft(4f);
             }).growX().left().row();
         }
         if(!any) list.add("No floors found").left();
