@@ -6,3 +6,4 @@ subtitle: by The Omega
 version: 1.0
 minGameVersion: 160.7
 main: oreterrainfilter.Alterra
+java: true
