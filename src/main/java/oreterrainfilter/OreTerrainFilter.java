@@ -7,16 +7,17 @@ import mindustry.maps.filters.GenerateFilter;
 import mindustry.world.blocks.environment.OreBlock;
 
 public class OreTerrainFilter extends GenerateFilter{
+    /** Names of floors whose ore overlays get removed. */
     public Seq<String> excludedFloors = new Seq<>();
 
     @Override
     public FilterOption[] options(){
-        return new FilterOption[]{new FloorFilterOption(this)};
+        return new FilterOption[]{ new FloorFilterOption(this) };
     }
 
     @Override
     public String name(){
-        return "Ore Terrain Filter";
+        return "Ore Remover";
     }
 
     public boolean excludes(String floorName){
@@ -24,9 +25,9 @@ public class OreTerrainFilter extends GenerateFilter{
     }
 
     @Override
-    public void apply(GenerateInput input){
-        if(input.overlay instanceof OreBlock && input.floor != null && excludes(input.floor.name)){
-            input.overlay = Blocks.air;
+    public void apply(GenerateInput in){
+        if(in.overlay instanceof OreBlock && excludes(in.floor.name)){
+            in.overlay = Blocks.air;
         }
     }
 }
