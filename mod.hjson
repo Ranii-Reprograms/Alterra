@@ -5,4 +5,4 @@ description: Configurable editing tool for the Map Editor.
 subtitle: by The Omega
 version: 1.0
 minGameVersion: 160.7
-main: oreterrainfilter.OreTerrainFilterMod
+main: oreterrainfilter.Alterra
