@@ -3,7 +3,7 @@ displayName: Alterra
 author: Ranii
 description: Configurable editing tool for the Map Editor.
 subtitle: by The Omega
-version: 1.0
+version: 1.1
 minGameVersion: 160.7
 main: oreterrainfilter.Alterra
 java: true
