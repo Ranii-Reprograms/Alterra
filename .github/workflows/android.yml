@@ -1,0 +1,28 @@
+name: Build Android jar
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - run: gradle build
+      - name: Dex for Android
+        run: |
+          BT=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -1)
+          PLAT=$(ls -d $ANDROID_HOME/platforms/android-* | sort -V | tail -1)
+          JAR=$(ls build/libs/*.jar | head -1)
+          mkdir -p dexout
+          $BT/d8 --min-api 26 --lib $PLAT/android.jar --output dexout $JAR
+          cp $JAR Alterra.jar
+          (cd dexout && zip ../Alterra.jar classes.dex)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Alterra
+          path: Alterra.jar
